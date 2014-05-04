@@ -1,0 +1,223 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title><!-- Insert your title here --></title>
+    
+    <title>Capstone Project</title>
+    
+    <!--Bring in the css-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.4.custom.min.css">    
+        
+    <!--Bring in the Scripts-->    
+    <script language="javascript" type="text/javascript" src="js/scripts.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/highstock.js"></script>
+    
+</head>
+<body>
+    
+    
+<div id="container" style="height: 400px; min-width: 310px"></div>
+    
+    <script>
+        
+      /*
+               
+       $(function() {
+	var seriesOptions = [],
+		yAxisOptions = [],
+		seriesCounter = 0,
+                //create array of rooms
+                rooms = new array();
+                
+                
+                
+		names = ['MSFT', 'AAPL', 'GOOG'],
+		colors = Highcharts.getOptions().colors;
+
+	$.each(names, function(i, name) {
+
+		$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename='+ name.toLowerCase() +'-c.json&callback=?',	function(data) {
+
+                
+                    for(var key in data){
+                        document.write(name);
+                        document.write(data[key]);
+                        document.write('<br/>')
+                        
+                    }
+                    
+                    
+                    
+                
+			seriesOptions[i] = {
+				name: name,
+				data: data
+			};
+
+			// As we're loading the data asynchronously, we don't know what order it will arrive. So
+			// we keep a counter and create the chart when all the data is loaded.
+			seriesCounter++;
+
+			if (seriesCounter == names.length) {
+				createChart();
+			}
+		});
+	});
+
+
+
+	// create the chart when all data is loaded
+	function createChart() {
+
+		$('#container').highcharts('StockChart', {
+		    chart: {
+		    },
+
+		    rangeSelector: {
+				inputEnabled: $('#container').width() > 480,
+		        selected: 4
+		    },
+
+		    yAxis: {
+		    	labels: {
+		    		formatter: function() {
+		    			return (this.value > 0 ? '+' : '') + this.value + '%';
+		    		}
+		    	},
+		    	plotLines: [{
+		    		value: 0,
+		    		width: 2,
+		    		color: 'silver'
+		    	}]
+		    },
+		    
+		    plotOptions: {
+		    	series: {
+		    		compare: 'percent'
+		    	}
+		    },
+		    
+		    tooltip: {
+		    	pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+		    	valueDecimals: 2
+		    },
+		    
+		    series: seriesOptions
+		});
+	}
+
+});
+        
+        
+        
+    */ 
+
+        
+        
+        
+        $.getJSON('createCharts.php',	function(data) {
+            
+            
+            
+            /**********************
+            *   End Game
+            *
+            *   seriesOption[i]{
+            *
+            *          Room:    Value
+            *          Voltage: 120 or 240
+            *          Data:    data(time,power)
+            *    
+            *   
+            *        }
+            *
+            *
+            *
+            ***********************/
+            
+            
+            	var seriesOptions = [],
+		yAxisOptions = [],
+		seriesCounter = 0,
+                //create array of rooms
+                rooms = new array();
+            
+
+                for(room in data){
+                    
+                    rooms.push(room);
+                    
+                }
+                
+                
+                for(var i = 0; i < rooms.length; i++){
+                        
+                      voltage = new array();
+                      
+                      voltage.push(data[room]);
+                      
+                        
+                        
+                        
+                }
+                
+                    for(voltage in data[room]){
+                        
+                        document.write(voltage);
+                        document.write("<br/>");
+                    
+                    
+                         for(time in data[room][voltage]){
+                    
+                    
+                                var current = data[room][voltage][time];
+                                
+                                var power = current * voltage;
+                    
+                                document.write(time);
+                                document.write("=>");
+                                document.write(power);
+                                document.write("<br/>");
+                    
+                        
+                        }
+                    }
+
+                   
+                }
+                
+            
+
+		});
+		
+		
+
+    
+        
+       // console.log(parsed);
+       
+
+
+        
+        
+    </script>
+    
+    
+    <script>
+        
+        
+
+        
+        
+    </script>
+    
+    
+
+    
+    
+</body>
+</html>

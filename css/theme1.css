@@ -1,0 +1,123 @@
+
+
+
+#mainCharts{
+
+
+    border:2px solid;
+    background-color: #F0F8FF;
+    width: 90%;
+    margin:auto;
+    height: 600px;
+    border-radius:25px;
+    
+    
+    
+}
+.tableDivs{
+    
+    border: 1px solid;
+    text-align: center;
+    border-radius:15px;
+    width: 200px;
+    height: 75px;
+}
+
+
+
+#sampleImage{
+    
+    margin: auto;
+
+    
+    
+}
+
+.configDiv{
+
+
+    border:2px solid;
+    background-color: #F0F8FF;
+    width: 90%;
+    margin:auto;
+    height: 200px;
+    border-radius:25px;
+    display:block;
+    
+    
+    
+}
+
+.links{
+    
+    
+    text-align: center;
+    margin-right: auto;
+    color: #000;
+    font-family: sans-serif;
+    top: 1em;
+    right: 1em;
+    position: absolute;
+    
+}
+#channelTable{
+    
+    border-spacing: 75px 5px;
+    border-collapse: separate;
+    
+}
+
+
+
+#loginDiv{
+    
+    margin: auto;
+    font-family: sans-serif;
+    margin-right: 0px;
+    margin-left: 80%;
+    
+}
+
+
+#header{
+    
+    font-size: 25px;
+    
+}
+
+
+#channelTable{
+    
+    border-spacing: 75px 5px;
+    border-collapse: separate;
+    
+}
+
+label,{
+    display:block;
+}
+
+fieldset{
+    padding:0;
+    border:0;
+    margin-top:25px;
+}
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+
+}
+
+.custom-combobox-input {
+    margin: 0;
+    padding: 0.3em;
+}

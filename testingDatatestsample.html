@@ -1,0 +1,143 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title><!-- Insert your title here --></title>
+    
+    <title>Capstone Project</title>
+    
+    <!--Bring in the css-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.4.custom.min.css">    
+        
+    <!--Bring in the Scripts-->    
+    <script language="javascript" type="text/javascript" src="js/scripts.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/highstock.js"></script>
+    
+</head>
+<body>
+    
+    
+<div id="container" style="height: 400px; min-width: 310px"></div>
+    
+    <script>
+
+        
+    $(function() {
+        
+            var count = 0;              
+            var index = 0;
+ 
+            var  seriesOptions = [],
+                 yAxisOptions = [],
+		 colors = Highcharts.getOptions().colors;
+            
+           
+        
+        $.getJSON('createCharts.php',	function(data) {
+
+                count = Object.keys(data).length;
+            
+
+                for(room in data){
+
+                
+                    for(voltage in data[room]){
+                        
+                    
+                         for(time in data[room][voltage]){
+            
+                                seriesOptions[index] = {
+                                    name:       room,
+                                    data:       data[room][voltage]
+                                };  
+
+                            //   var current = data[room][voltage][time];              
+                            //  var power = current * voltage;
+
+                    
+                        
+                        }
+                    }
+
+                    index++;
+                   
+                    if (index == count) {
+                    
+                        createChart();
+                        console.log(seriesOptions);
+                     }
+                
+                
+                }
+
+            
+        });
+      
+      
+      	// create the chart when all data is loaded
+    function createChart() {
+
+		$('#container').highcharts('StockChart', {
+		    chart: {
+		    },
+
+		    rangeSelector: {
+                            buttons: [{
+                                        type: 'second',
+                                        count: 3,
+                                        text: 'sec'
+                                        }, {
+                                        type: 'minute',
+                                        count: 6,
+                                        text: 'min'
+                                    }]
+                            },
+                            
+                    xAxis: {
+                            minRange: 1000
+                     },        
+
+		    yAxis: {
+
+		    	plotLines: [{
+		    		value: 0,
+		    		width: 2,
+		    		color: 'silver'
+		    	}]
+		    },
+                    
+		    
+		    plotOptions: {
+		    	series: {
+		    		//compare: 'percent'
+		    	}
+		    },
+		    
+
+		    
+		    series: seriesOptions
+		});
+	}
+        
+});
+
+    </script>
+    
+    
+    <script>
+        
+        
+
+        
+        
+    </script>
+    
+    
+
+    
+    
+</body>
+</html>
